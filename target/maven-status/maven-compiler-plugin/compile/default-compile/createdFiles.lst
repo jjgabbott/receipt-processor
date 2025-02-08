@@ -1,0 +1,16 @@
+com\fetch_rewards\receipt_processor\domain\Points.class
+com\fetch_rewards\receipt_processor\controller\ReceiptProecssorController.class
+com\fetch_rewards\receipt_processor\domain\ReceiptId.class
+com\fetch_rewards\receipt_processor\exception\ReceiptNotFoundException.class
+com\fetch_rewards\receipt_processor\domain\Receipt.class
+com\fetch_rewards\receipt_processor\exception\ErrorResponse.class
+com\fetch_rewards\receipt_processor\dao\impl\ReceiptProcessorDaoImpl.class
+com\fetch_rewards\receipt_processor\exception\BadRequestException.class
+com\fetch_rewards\receipt_processor\ReceiptProcessorApplication.class
+com\fetch_rewards\receipt_processor\domain\Item.class
+com\fetch_rewards\receipt_processor\service\ReceiptProcessorService.class
+com\fetch_rewards\receipt_processor\configuration\ReceiptProcessorConfiguration.class
+com\fetch_rewards\receipt_processor\exception\GlobalExceptionHandler.class
+com\fetch_rewards\receipt_processor\dao\ReceiptProcessorDao.class
+com\fetch_rewards\receipt_processor\service\impl\ReceiptProcessorServiceImpl.class
+com\fetch_rewards\receipt_processor\configuration\OpenAPIConfiguration.class

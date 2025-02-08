@@ -1,0 +1,125 @@
+openapi: 3.1.0
+info:
+  title: Receipt Processor
+  description: A simple receipt processor
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /receipts/process:
+    post:
+      tags:
+      - receipt-proecssor-controller
+      summary: Submits a receipt for processing.
+      description: Submits a receipt for processing.
+      operationId: processReceipt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Receipt"
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReceiptId"
+  /receipts/{id}/points:
+    get:
+      tags:
+      - receipt-proecssor-controller
+      summary: Returns the points awarded for the receipt.
+      description: Returns the points awarded for the receipt.
+      operationId: getPoints
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the receipt.
+        required: true
+        schema:
+          type: string
+          pattern: ^\S+$
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Points"
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    Item:
+      type: object
+      properties:
+        shortDescription:
+          type: string
+          description: The Short Product Description for the item.
+          example: Mountain Dew 12PK
+          pattern: "^[\\w\\s\\-]+$"
+        price:
+          type: string
+          description: The total price payed for this item.
+          example: 6.49
+          pattern: "^\\d+\\.\\d{2}$"
+    Receipt:
+      type: object
+      properties:
+        retailer:
+          type: string
+          description: The name of the retailer or store the receipt is from.
+          example: M&M Corner Market
+          pattern: "[\\w\\s\\-&]+$"
+        purchaseDate:
+          type: string
+          format: date
+          description: The date of the purchase printed on the receipt.
+          example: 2022-01-01
+        purchaseTime:
+          type: string
+          format: time
+          description: The time of the purchase printed on the receipt. 24-hour time
+            expected.
+          example: 13:01
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+          minimum: 1
+        total:
+          type: string
+          description: TThe total amount paid on the receipt.
+          example: 6.49
+          pattern: "^\\d+\\.\\d{2}$"
+    ReceiptId:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of a receipt
+    Points:
+      type: object
+      properties:
+        points:
+          type: integer
+          format: int32
+          description: The points corresponding to a given receipt.

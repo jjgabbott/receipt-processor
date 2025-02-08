@@ -1,0 +1,16 @@
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\configuration\OpenAPIConfiguration.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\configuration\ReceiptProcessorConfiguration.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\controller\ReceiptProecssorController.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\dao\impl\ReceiptProcessorDaoImpl.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\dao\ReceiptProcessorDao.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\domain\Item.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\domain\Points.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\domain\Receipt.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\domain\ReceiptId.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\exception\BadRequestException.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\exception\ErrorResponse.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\exception\GlobalExceptionHandler.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\exception\ReceiptNotFoundException.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\ReceiptProcessorApplication.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\service\impl\ReceiptProcessorServiceImpl.java
+C:\java_projects\github\ultimate\receipt-processor\src\main\java\com\fetch_rewards\receipt_processor\service\ReceiptProcessorService.java
