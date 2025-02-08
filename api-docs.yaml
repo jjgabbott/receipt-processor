@@ -27,6 +27,12 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
         "200":
           description: OK
           content:
@@ -49,6 +55,12 @@ paths:
           type: string
           pattern: ^\S+$
       responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
         "404":
           description: Not Found
           content:
@@ -107,7 +119,7 @@ components:
           minimum: 1
         total:
           type: string
-          description: TThe total amount paid on the receipt.
+          description: The total amount paid on the receipt.
           example: 6.49
           pattern: "^\\d+\\.\\d{2}$"
     ReceiptId:
