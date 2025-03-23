@@ -65,7 +65,7 @@ public class ReceiptProcessorServiceImpl implements ReceiptProcessorService {
 	 * @throws BadRequestException
 	 */
 	@Override
-	public ReceiptId processReceipt(Receipt receipt) throws BadRequestException {
+	public ReceiptId processReceipt(Receipt receipt, String userId) throws BadRequestException {
 		try {
 			var points = 0;
 			points += getPointsFromRetailerName(receipt.retailer());
@@ -80,8 +80,9 @@ public class ReceiptProcessorServiceImpl implements ReceiptProcessorService {
 
 			points += getPointsForPurchaseDate(LocalDate.parse(receipt.purchaseDate()));
 			points += getPointsForPurchaseTime(LocalTime.parse(receipt.purchaseTime()));
+			points += getBonusPoints(userId);
 			return receiptProcessorDao
-					.saveReceiptPoints(UUID.nameUUIDFromBytes(receipt.toString().getBytes()).toString(), points);
+					.saveReceiptPoints(UUID.nameUUIDFromBytes(receipt.toString().getBytes()).toString(), points, userId);
 		} catch (Exception ex) {
 			throw new BadRequestException("Malformed Request: " + receipt.toString());
 		}
@@ -199,6 +200,10 @@ public class ReceiptProcessorServiceImpl implements ReceiptProcessorService {
 		return time.compareTo(lowerTimeBound) > 0 & time.compareTo(upperTimeBound) < 0
 				? receiptProcessorConfig.getPointsAwardedTimeThreshold()
 				: 0;
+	}
+	
+	private int getBonusPoints(String userId) {
+		 return receiptProcessorDao.getExistingReceiptCount(userId) * 10;	 
 	}
 
 }

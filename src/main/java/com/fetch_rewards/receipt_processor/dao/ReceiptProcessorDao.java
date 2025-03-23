@@ -16,5 +16,7 @@ public interface ReceiptProcessorDao {
 	/**
 	 * Expects to save points for an incoming UUID to a data store
 	 */
-	public ReceiptId saveReceiptPoints(String id, int points);
+	public ReceiptId saveReceiptPoints(String id, int points, String userId);
+	
+	public int getExistingReceiptCount(String userId);
 }

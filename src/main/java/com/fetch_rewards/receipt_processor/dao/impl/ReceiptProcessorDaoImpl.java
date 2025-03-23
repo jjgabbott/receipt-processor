@@ -17,6 +17,8 @@ public class ReceiptProcessorDaoImpl implements ReceiptProcessorDao {
 
 	// Local storage for UUIDs and corresponding Receipt points
 	private HashMap<String, Integer> receiptPointsMap = new HashMap<String, Integer>();
+	
+	private HashMap<String, Integer> userCounts = new HashMap<String, Integer>();
 
 	/**
 	 * This method will take an incoming UUID and fetch its points from the data
@@ -46,9 +48,23 @@ public class ReceiptProcessorDaoImpl implements ReceiptProcessorDao {
 	 *         for fetching the Receipt's points.
 	 */
 	@Override
-	public ReceiptId saveReceiptPoints(String id, int points) {
+	public ReceiptId saveReceiptPoints(String id, int points, String userId) {
 		receiptPointsMap.put(id, points);
+		if(userCounts.containsKey(userId)) {
+			userCounts.put(userId, userCounts.get(userId) + 1);
+		} else {
+			userCounts.put(userId, 1);
+		}
 		return new ReceiptId(id);
+	}
+
+	@Override
+	public int getExistingReceiptCount(String userId) {
+		if(userCounts.containsKey(userId)) {
+			return userCounts.get(userId);
+		} else {
+			return 0;
+		}
 	}
 
 }

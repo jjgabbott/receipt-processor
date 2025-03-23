@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,8 +50,8 @@ public class ReceiptProecssorController {
 	 */
 	@Operation(summary = "Submits a receipt for processing.", description = "Submits a receipt for processing.")
 	@PostMapping("process")
-	public ResponseEntity<ReceiptId> processReceipt(@RequestBody Receipt receipt) throws BadRequestException {
-		return new ResponseEntity<ReceiptId>(receiptProcessor.processReceipt(receipt), HttpStatus.OK);
+	public ResponseEntity<ReceiptId> processReceipt(@RequestBody Receipt receipt, @RequestHeader(value="Authorization") String authHeader) throws BadRequestException {
+		return new ResponseEntity<ReceiptId>(receiptProcessor.processReceipt(receipt, authHeader.replace("Bearer ", "")), HttpStatus.OK);
 	}
 
 	/**

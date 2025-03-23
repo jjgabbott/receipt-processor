@@ -26,5 +26,5 @@ public interface ReceiptProcessorService {
 	 * and saved correctly.
 	 * @throws BadRequestException 
 	 */
-	public ReceiptId processReceipt(Receipt receipt) throws BadRequestException;
+	public ReceiptId processReceipt(Receipt receipt,  String userId) throws BadRequestException;
 }
